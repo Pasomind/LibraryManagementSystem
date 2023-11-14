@@ -7,12 +7,13 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 
 public class StudentTest {
-    private Student student;
+    private Student student, student1;
     private Book book1, book2;
 
     @BeforeEach
     void setUp() {
         student = new Student("123", "John Doe");
+        student1 = new Student ("999", "Alvaro Hernandez");
         book1 = new Book("B001", "Effective Java", "Joshua Bloch");
         book2 = new Book("B002", "Clean Code", "Robert C. Martin");
     }
@@ -61,5 +62,27 @@ public class StudentTest {
         assertTrue(borrowedBooks.contains(book2));
         assertEquals(1, borrowedBooks.size());
     }
-}
+
+    @Test
+    void testIfStudentExists() {
+        assertEquals("John Doe",student.getName());
+        student.getName().equals(student);
+        assertTrue(true,"Welcome John Doe");
+        assertEquals("Alvaro Hernandez",student1.getName());
+        student1.getName().equals(student1);
+        assertTrue(true,"Welcome Alvaro Hernandez");
+    }
+    @Test
+    void testIfStudentDoesntExists() {
+        assertEquals("John Doe",student.getName());
+        student.getName().equals(student1);
+        assertFalse(false,"Name doesnt match to Student");
+
+        assertEquals("Alvaro Hernandez",student1.getName());
+        student1.getName().equals(student1);
+        assertFalse(false,"Name doesnt match to Student");
+    }
+
+
+  }
 
